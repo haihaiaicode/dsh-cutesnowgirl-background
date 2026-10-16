@@ -1,0 +1,99 @@
+{
+  "name": "dsh-cutesnowgirl-background",
+  "version": "0.1.0",
+  "description": "A video workspace background with translucent composer surfaces for DeepSeek Harness.",
+  "type": "module",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "assets",
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "README.en.md",
+    "LICENSE"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "haihai",
+    "url": "https://github.com/haihaiaicode"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haihaiaicode/dsh-cutesnowgirl-background.git"
+  },
+  "homepage": "https://github.com/haihaiaicode/dsh-cutesnowgirl-background#readme",
+  "bugs": {
+    "url": "https://github.com/haihaiaicode/dsh-cutesnowgirl-background/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "cordis",
+    "plugin",
+    "video-background",
+    "theme",
+    "glassmorphism"
+  ],
+  "engines": {
+    "node": ">=20",
+    "dsh": ">=0.2.0-rc.1"
+  },
+  "dsh": {
+    "engines": {
+      "dsh": ">=0.2.0-rc.1"
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "dshWorkshop": {
+    "schema": "omdsh-workshop-package/v1",
+    "type": "plugin",
+    "integration": {
+      "protocol": "harness-profile",
+      "artifact": "cordis.patch.yml"
+    },
+    "install": {
+      "mode": "transactional",
+      "adapter": "profile-bundle",
+      "failurePolicy": "generation-rollback",
+      "touchesCurrentBeforeActivation": false
+    },
+    "lifecycle": {
+      "activation": "restart-profile",
+      "dispose": "restart-profile"
+    },
+    "permissions": [
+      "web:index-inject",
+      "web:http-route",
+      "dom:background-overlay"
+    ],
+    "compatibility": {
+      "dshVersions": [
+        ">=0.2.0-rc.1"
+      ]
+    },
+    "capability": {
+      "id": "workspace-video-background",
+      "kind": "ui",
+      "invocation": "Open a Harness workspace after the boot splash has finished.",
+      "expected": "A muted looping video appears behind the workspace while the composer remains translucent."
+    }
+  },
+  "scripts": {
+    "check": "node --check lib/index.js && node --check lib/client.js && node --test",
+    "test": "node --test",
+    "pack:check": "npm pack --dry-run"
+  },
+  "dependencies": {}
+}

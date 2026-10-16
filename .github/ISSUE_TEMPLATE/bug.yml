@@ -1,0 +1,28 @@
+name: Bug report
+description: Report a compatibility or playback problem
+title: '[Bug] '
+labels: ['bug']
+body:
+  - type: input
+    id: harness
+    attributes:
+      label: DeepSeek Harness version
+    validations:
+      required: true
+  - type: input
+    id: plugin
+    attributes:
+      label: Plugin version
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: plugins
+    attributes:
+      label: Other visual or boot plugins
+      description: Include boot animations and theme plugins.

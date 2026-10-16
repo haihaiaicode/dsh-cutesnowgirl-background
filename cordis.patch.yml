@@ -1,0 +1,4 @@
+# DeepSeek Harness profile bundle entry.
+- insert:
+    - id: cutesnowgirl-background
+      name: dsh-cutesnowgirl-background
