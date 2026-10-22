@@ -255,6 +255,19 @@ body.dsh-cutesnowgirl-background-ready .BynINW_centerCol [class*='_card'] textar
   caret-color: var(--dsh-video-ink);
 }
 
+/* The reading-layer rules above also match paragraphs created while typing.
+   Keep those paragraphs on the composer glass, with no extra caption tile. */
+body.dsh-cutesnowgirl-background-ready .RlGAzG_card [contenteditable] :where(p, li, blockquote),
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol [class*='_card'] [contenteditable='true'] :where(p, li, blockquote) {
+  width: auto;
+  max-width: none;
+  padding: 0;
+  border-radius: 0;
+  background: transparent !important;
+  color: var(--dsh-video-ink) !important;
+  text-shadow: none !important;
+}
+
 body.dsh-cutesnowgirl-background-ready .BynINW_centerCol textarea::placeholder {
   color: var(--dsh-video-muted) !important;
   opacity: 1;
