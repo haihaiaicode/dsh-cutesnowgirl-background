@@ -38,7 +38,7 @@ body.dsh-cutesnowgirl-background-ready[data-ds-dark-theme] {
   --dsh-video-ink: #f7f9ff;
   --dsh-video-muted: #d9e1f0;
   --dsh-video-sidebar: rgba(12, 24, 43, 0.22);
-  --dsh-video-reading-tint: rgba(12, 24, 43, 0.64);
+  --dsh-video-reading-tint: rgba(232, 237, 246, 0.69);
   --dsh-video-detail-tint: rgba(232, 237, 246, 0.69);
   --dsh-video-detail-ink: #202c41;
 }
@@ -83,7 +83,7 @@ body.dsh-cutesnowgirl-background-ready .BynINW_centerCol :where(p, li, h1, h2, h
 
 /* Small, unblurred caption-like surfaces keep the video visible between
    answer lines and avoid a full-height pane over the scene. */
-body.dsh-cutesnowgirl-background-ready .BynINW_centerCol :where(p, li, blockquote, pre) {
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol :where(p, li, blockquote) {
   width: fit-content;
   max-width: 100%;
   padding: 2px 6px;
@@ -91,6 +91,10 @@ body.dsh-cutesnowgirl-background-ready .BynINW_centerCol :where(p, li, blockquot
   background: var(--dsh-video-reading-tint);
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
+}
+
+body.dsh-cutesnowgirl-background-ready[data-ds-dark-theme] .BynINW_centerCol :where(p, li, blockquote) {
+  color: var(--dsh-video-detail-ink) !important;
 }
 
 /* Headings have enough stroke area for a restrained contrast shadow; keep
@@ -118,10 +122,48 @@ body.dsh-cutesnowgirl-background-ready .BynINW_centerCol .v5IAXa_body table {
 }
 
 body.dsh-cutesnowgirl-background-ready .BynINW_centerCol .v5IAXa_body table :where(th, td) {
+  padding-inline: 14px !important;
   background: transparent !important;
   color: var(--dsh-video-detail-ink) !important;
   opacity: 1 !important;
   text-shadow: none !important;
+}
+
+/* Harness normally removes padding from the outer table cells; restore even
+   breathing room inside the rounded panel without changing column widths. */
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol .v5IAXa_body table :where(th, td):first-child {
+  padding-left: 14px !important;
+}
+
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol .v5IAXa_body table :where(th, td):last-child {
+  padding-right: 14px !important;
+}
+
+/* Restrict code-surface overrides to the conversation. Harness uses separate
+   renderers for inline code, code cards, terminals and search output. */
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol {
+  --dsw-alias-markdown-inline-code: var(--dsh-video-detail-tint);
+  --dsw-alias-markdown-code-block: var(--dsh-video-detail-tint);
+  --dsw-alias-markdown-code-block-banner: var(--dsh-video-detail-tint);
+}
+
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol :where(._card_1pq26_1, ._block_8z71b_1, ._block_1u3n2_1, ._block_7gxqk_4, ._markdown_1ypvv_5 :not(pre) > code) {
+  background: var(--dsh-video-detail-tint) !important;
+  color: var(--dsh-video-detail-ink) !important;
+  --dsl-code-block-background: var(--dsh-video-detail-tint);
+  --dsl-code-block-banner-background-color: var(--dsh-video-detail-tint);
+  --dsw-alias-label-primary: var(--dsh-video-detail-ink);
+  --dsw-alias-label-secondary: #3c4b61;
+  --dsw-alias-label-tertiary: #526176;
+}
+
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol :where(._header_1pq26_10, ._header_1u3n2_12, ._banner_7gxqk_24, ._header_8z71b_32, ._copyButton_8z71b_132) {
+  background: var(--dsh-video-detail-tint) !important;
+  color: var(--dsh-video-detail-ink) !important;
+}
+
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol ._block_7gxqk_4 ._bannerWrap_7gxqk_24 {
+  background: var(--dsh-video-detail-tint) !important;
 }
 
 body.dsh-cutesnowgirl-background-ready .BynINW_centerCol .v5IAXa_body table :where(th, td) :where(span, strong, em) {

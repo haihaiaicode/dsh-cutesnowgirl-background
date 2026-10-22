@@ -6,7 +6,7 @@ Adds a looping video background and a translucent composer to the DeepSeek Harne
 
 - Plays the bundled video muted, looped, centered, and cover-fitted.
 - Stays hidden and paused while the native splash or `dsh-550c-boot` is active.
-- Loads media only after the workspace appears. The video has no full-screen tint; small answer paragraphs get local backings, while Markdown tables and reasoning use rounded, pale gray translucent surfaces without blurring the video. The sidebar has a light translucent fill.
+- Loads media only after the workspace appears. The video has no full-screen tint; paragraphs, tables, reasoning and code content use local, pale gray translucent surfaces without blurring the video. Table rows and columns stay intact with even inner spacing. The sidebar has a light translucent fill.
 - Only the topmost translucent composer frosts the answer text beneath it. Light and dark modes use distinct composer palettes and solid text colors, while Harness settings dialogs retain their native theme.
 - Pauses while the document is hidden.
 - Removes its layer on media failure, leaving the original UI usable.
