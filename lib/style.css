@@ -16,34 +16,25 @@
   object-position: center;
 }
 
-#dsh-cutesnowgirl-background::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(12, 20, 36, 0.12);
-}
-
 body.dsh-cutesnowgirl-background-ready {
   isolation: isolate;
   background: transparent !important;
   /* Light is the default; Harness marks dark mode on body. */
-  --dsh-video-reading: rgba(237, 243, 253, 0.55);
-  --dsh-video-reading-edge: rgba(255, 255, 255, 0.16);
-  --dsh-video-composer-top: rgba(247, 250, 255, 0.92);
-  --dsh-video-composer-bottom: rgba(231, 239, 251, 0.9);
+  --dsh-video-composer-top: rgba(248, 251, 255, 0.78);
+  --dsh-video-composer-bottom: rgba(225, 236, 251, 0.72);
   --dsh-video-composer-border: rgba(255, 255, 255, 0.68);
   --dsh-video-ink: #18263c;
   --dsh-video-muted: #42516a;
+  --dsh-video-sidebar: rgba(237, 244, 254, 0.18);
 }
 
 body.dsh-cutesnowgirl-background-ready[data-ds-dark-theme] {
-  --dsh-video-reading: rgba(14, 25, 44, 0.56);
-  --dsh-video-reading-edge: rgba(231, 240, 255, 0.08);
-  --dsh-video-composer-top: rgba(24, 37, 59, 0.9);
-  --dsh-video-composer-bottom: rgba(14, 26, 45, 0.92);
+  --dsh-video-composer-top: rgba(25, 39, 64, 0.75);
+  --dsh-video-composer-bottom: rgba(12, 25, 45, 0.78);
   --dsh-video-composer-border: rgba(217, 231, 255, 0.24);
   --dsh-video-ink: #f7f9ff;
   --dsh-video-muted: #d9e1f0;
+  --dsh-video-sidebar: rgba(12, 24, 43, 0.22);
 }
 
 body.dsh-cutesnowgirl-background-ready #dsh-cutesnowgirl-background {
@@ -61,15 +52,16 @@ body.dsh-cutesnowgirl-background-ready [data-dsh-workspace],
 body.dsh-cutesnowgirl-background-ready [data-dsh-main-frame] {
   background: transparent !important;
   --dsw-alias-bg-base: transparent;
+  --dsw-specific-sidebar-fill: var(--dsh-video-sidebar);
 }
 
-/* A reading pane keeps the answer legible without hiding the scene. Theme
-   tokens stay in the workspace, so settings and dialogs keep their own fills. */
+/* The answer layer stays optically clear. Only text contrast changes here;
+   the video below is never blurred or covered by a full-height reading pane. */
 body.dsh-cutesnowgirl-background-ready .BynINW_centerCol {
-  background: var(--dsh-video-reading) !important;
-  border-inline: 1px solid var(--dsh-video-reading-edge);
-  -webkit-backdrop-filter: blur(5px) saturate(112%);
-  backdrop-filter: blur(5px) saturate(112%);
+  background: transparent !important;
+  border-color: transparent !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
   color: var(--dsh-video-ink);
   --dsw-alias-label-primary: var(--dsh-video-ink);
   --dsw-alias-label-secondary: var(--dsh-video-muted);
@@ -80,6 +72,7 @@ body.dsh-cutesnowgirl-background-ready .BynINW_centerCol {
 body.dsh-cutesnowgirl-background-ready .BynINW_centerCol :where(p, li, h1, h2, h3, h4, blockquote) {
   color: var(--dsh-video-ink) !important;
   opacity: 1 !important;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.82), 0 0 8px rgba(255, 255, 255, 0.48);
 }
 
 body.dsh-cutesnowgirl-background-ready .BynINW_centerCol :where(p, li) {
@@ -87,7 +80,7 @@ body.dsh-cutesnowgirl-background-ready .BynINW_centerCol :where(p, li) {
 }
 
 body.dsh-cutesnowgirl-background-ready[data-ds-dark-theme] .BynINW_centerCol :where(p, li, h1, h2, h3, h4, blockquote) {
-  text-shadow: 0 1px 2px rgba(6, 13, 28, 0.48);
+  text-shadow: 0 1px 3px rgba(4, 12, 29, 0.92), 0 0 8px rgba(4, 12, 29, 0.72);
 }
 
 /* Blur the conversation beneath the composer; the tint makes its letters
@@ -101,8 +94,8 @@ body.dsh-cutesnowgirl-background-ready .BynINW_centerCol [class*='_card']:has(te
   border: 1px solid var(--dsh-video-composer-border) !important;
   border-radius: 20px;
   box-shadow: 0 14px 36px rgba(8, 17, 34, 0.16), inset 0 1px rgba(255, 255, 255, 0.09);
-  -webkit-backdrop-filter: blur(26px) saturate(115%);
-  backdrop-filter: blur(26px) saturate(115%);
+  -webkit-backdrop-filter: blur(18px) saturate(115%);
+  backdrop-filter: blur(18px) saturate(115%);
   color: var(--dsh-video-ink);
   --dsw-alias-label-primary: var(--dsh-video-ink);
   --dsw-alias-label-secondary: var(--dsh-video-muted);
@@ -126,11 +119,11 @@ body.dsh-cutesnowgirl-background-ready .BynINW_centerCol textarea::placeholder {
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  body.dsh-cutesnowgirl-background-ready .BynINW_centerCol {
-    background: rgba(239, 244, 253, 0.9) !important;
+  body.dsh-cutesnowgirl-background-ready .RlGAzG_card {
+    background: rgba(239, 244, 253, 0.86) !important;
   }
-  body.dsh-cutesnowgirl-background-ready[data-ds-dark-theme] .BynINW_centerCol {
-    background: rgba(14, 25, 44, 0.9) !important;
+  body.dsh-cutesnowgirl-background-ready[data-ds-dark-theme] .RlGAzG_card {
+    background: rgba(14, 25, 44, 0.86) !important;
   }
 }
 
