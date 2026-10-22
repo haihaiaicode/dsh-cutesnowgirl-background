@@ -27,7 +27,8 @@ body.dsh-cutesnowgirl-background-ready {
   --dsh-video-muted: #42516a;
   --dsh-video-sidebar: rgba(237, 244, 254, 0.18);
   --dsh-video-reading-tint: rgba(247, 250, 255, 0.64);
-  --dsh-video-table-tint: rgba(247, 250, 255, 0.72);
+  --dsh-video-detail-tint: rgba(239, 242, 247, 0.66);
+  --dsh-video-detail-ink: #253147;
 }
 
 body.dsh-cutesnowgirl-background-ready[data-ds-dark-theme] {
@@ -38,7 +39,8 @@ body.dsh-cutesnowgirl-background-ready[data-ds-dark-theme] {
   --dsh-video-muted: #d9e1f0;
   --dsh-video-sidebar: rgba(12, 24, 43, 0.22);
   --dsh-video-reading-tint: rgba(12, 24, 43, 0.64);
-  --dsh-video-table-tint: rgba(12, 24, 43, 0.72);
+  --dsh-video-detail-tint: rgba(232, 237, 246, 0.69);
+  --dsh-video-detail-ink: #202c41;
 }
 
 body.dsh-cutesnowgirl-background-ready #dsh-cutesnowgirl-background {
@@ -105,17 +107,64 @@ body.dsh-cutesnowgirl-background-ready .BynINW_centerCol :where(p, li) {
   line-height: 1.65;
 }
 
-/* Harness renders Markdown tables as cells, not answer paragraphs. Give only
-   those cells a readable translucent surface without blurring the video. */
+/* Markdown tables use one rounded, translucent surface. A separated table
+   avoids the square corners caused by individually painted cells. */
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol .v5IAXa_body table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  background: var(--dsh-video-detail-tint);
+  overflow: hidden;
+}
+
 body.dsh-cutesnowgirl-background-ready .BynINW_centerCol .v5IAXa_body table :where(th, td) {
-  background: var(--dsh-video-table-tint) !important;
-  color: var(--dsh-video-ink) !important;
+  background: transparent !important;
+  color: var(--dsh-video-detail-ink) !important;
   opacity: 1 !important;
   text-shadow: none !important;
 }
 
 body.dsh-cutesnowgirl-background-ready .BynINW_centerCol .v5IAXa_body table :where(th, td) :where(span, strong, em) {
+  color: var(--dsh-video-detail-ink) !important;
   opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+/* Reasoning, its collapsed preview, and tool-process labels are rendered by
+   separate Harness components rather than Markdown paragraphs. */
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol :where(._3GBCTG_root, .WW4l1q_title, .EYGw8G_source, .EYGw8G_summary, ._4AI11G_root) {
+  color: var(--dsh-video-detail-ink) !important;
+  text-shadow: none !important;
+}
+
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol ._3GBCTG_summaryText {
+  color: var(--dsh-video-detail-ink) !important;
+  -webkit-text-fill-color: var(--dsh-video-detail-ink) !important;
+  text-shadow: none !important;
+}
+
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol :where(._3GBCTG_row, .WW4l1q_title, .EYGw8G_source, .EYGw8G_summary, ._4AI11G_root) {
+  border-radius: 9px;
+  background: var(--dsh-video-detail-tint) !important;
+}
+
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol ._3GBCTG_root[data-expanded] [data-open] [data-disclosure-header] {
+  background: var(--dsh-video-detail-tint) !important;
+  border-radius: 9px;
+}
+
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol ._3GBCTG_thinkBody {
+  border-radius: 10px;
+  background: var(--dsh-video-detail-tint);
+  color: var(--dsh-video-detail-ink);
+  --dsw-alias-label-primary: var(--dsh-video-detail-ink);
+  --dsw-alias-label-secondary: var(--dsh-video-detail-ink);
+  --dsw-alias-label-tertiary: var(--dsh-video-detail-ink);
+}
+
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol ._3GBCTG_thinkBody :where(p, li, h1, h2, h3, h4, blockquote) {
+  background: transparent !important;
+  color: var(--dsh-video-detail-ink) !important;
   text-shadow: none !important;
 }
 
