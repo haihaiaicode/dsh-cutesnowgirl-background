@@ -27,6 +27,7 @@ body.dsh-cutesnowgirl-background-ready {
   --dsh-video-muted: #42516a;
   --dsh-video-sidebar: rgba(237, 244, 254, 0.18);
   --dsh-video-reading-tint: rgba(247, 250, 255, 0.64);
+  --dsh-video-table-tint: rgba(247, 250, 255, 0.72);
 }
 
 body.dsh-cutesnowgirl-background-ready[data-ds-dark-theme] {
@@ -37,6 +38,7 @@ body.dsh-cutesnowgirl-background-ready[data-ds-dark-theme] {
   --dsh-video-muted: #d9e1f0;
   --dsh-video-sidebar: rgba(12, 24, 43, 0.22);
   --dsh-video-reading-tint: rgba(12, 24, 43, 0.64);
+  --dsh-video-table-tint: rgba(12, 24, 43, 0.72);
 }
 
 body.dsh-cutesnowgirl-background-ready #dsh-cutesnowgirl-background {
@@ -101,6 +103,20 @@ body.dsh-cutesnowgirl-background-ready[data-ds-dark-theme] .BynINW_centerCol :wh
 
 body.dsh-cutesnowgirl-background-ready .BynINW_centerCol :where(p, li) {
   line-height: 1.65;
+}
+
+/* Harness renders Markdown tables as cells, not answer paragraphs. Give only
+   those cells a readable translucent surface without blurring the video. */
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol .v5IAXa_body table :where(th, td) {
+  background: var(--dsh-video-table-tint) !important;
+  color: var(--dsh-video-ink) !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol .v5IAXa_body table :where(th, td) :where(span, strong, em) {
+  opacity: 1 !important;
+  text-shadow: none !important;
 }
 
 /* Blur the conversation beneath the composer; the tint makes its letters
