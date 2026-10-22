@@ -20,22 +20,30 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(8, 15, 30, 0.28);
+  background: rgba(12, 20, 36, 0.12);
 }
 
 body.dsh-cutesnowgirl-background-ready {
   isolation: isolate;
   background: transparent !important;
-  --dsw-alias-bg-base: transparent !important;
-  --dsw-specific-sidebar-fill: rgba(13, 22, 40, 0.27) !important;
-  --dsw-specific-input-major: rgba(16, 27, 47, 0.22) !important;
-  --dsw-specific-bubble: rgba(20, 33, 55, 0.44) !important;
-  --dsw-alias-bg-layer-1: rgba(20, 29, 47, 0.7) !important;
-  --dsw-alias-bg-layer-2: rgba(20, 29, 47, 0.76) !important;
-  --dsw-alias-bg-layer-3: rgba(25, 35, 54, 0.83) !important;
-  --dsw-alias-bg-layer-4: rgba(29, 39, 60, 0.88) !important;
-  --dsw-alias-bg-module-platform: rgba(20, 31, 51, 0.3) !important;
-  --dsw-menu-surface-fill: rgba(21, 29, 46, 0.92) !important;
+  /* Light is the default; Harness marks dark mode on body. */
+  --dsh-video-reading: rgba(237, 243, 253, 0.55);
+  --dsh-video-reading-edge: rgba(255, 255, 255, 0.16);
+  --dsh-video-composer-top: rgba(247, 250, 255, 0.92);
+  --dsh-video-composer-bottom: rgba(231, 239, 251, 0.9);
+  --dsh-video-composer-border: rgba(255, 255, 255, 0.68);
+  --dsh-video-ink: #18263c;
+  --dsh-video-muted: #42516a;
+}
+
+body.dsh-cutesnowgirl-background-ready[data-ds-dark-theme] {
+  --dsh-video-reading: rgba(14, 25, 44, 0.56);
+  --dsh-video-reading-edge: rgba(231, 240, 255, 0.08);
+  --dsh-video-composer-top: rgba(24, 37, 59, 0.9);
+  --dsh-video-composer-bottom: rgba(14, 26, 45, 0.92);
+  --dsh-video-composer-border: rgba(217, 231, 255, 0.24);
+  --dsh-video-ink: #f7f9ff;
+  --dsh-video-muted: #d9e1f0;
 }
 
 body.dsh-cutesnowgirl-background-ready #dsh-cutesnowgirl-background {
@@ -45,34 +53,85 @@ body.dsh-cutesnowgirl-background-ready #dsh-cutesnowgirl-background {
 body.dsh-cutesnowgirl-background-ready #root {
   position: relative;
   z-index: 0;
+  background: transparent !important;
 }
 
-body.dsh-cutesnowgirl-background-ready .BynINW_centerCol,
 body.dsh-cutesnowgirl-background-ready .BynINW_frame,
 body.dsh-cutesnowgirl-background-ready [data-dsh-workspace],
 body.dsh-cutesnowgirl-background-ready [data-dsh-main-frame] {
   background: transparent !important;
+  --dsw-alias-bg-base: transparent;
 }
 
+/* A reading pane keeps the answer legible without hiding the scene. Theme
+   tokens stay in the workspace, so settings and dialogs keep their own fills. */
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol {
+  background: var(--dsh-video-reading) !important;
+  border-inline: 1px solid var(--dsh-video-reading-edge);
+  -webkit-backdrop-filter: blur(5px) saturate(112%);
+  backdrop-filter: blur(5px) saturate(112%);
+  color: var(--dsh-video-ink);
+  --dsw-alias-label-primary: var(--dsh-video-ink);
+  --dsw-alias-label-secondary: var(--dsh-video-muted);
+  --dsw-alias-label-tertiary: var(--dsh-video-muted);
+  --dsw-specific-input-major: transparent;
+}
+
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol :where(p, li, h1, h2, h3, h4, blockquote) {
+  color: var(--dsh-video-ink) !important;
+  opacity: 1 !important;
+}
+
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol :where(p, li) {
+  line-height: 1.65;
+}
+
+body.dsh-cutesnowgirl-background-ready[data-ds-dark-theme] .BynINW_centerCol :where(p, li, h1, h2, h3, h4, blockquote) {
+  text-shadow: 0 1px 2px rgba(6, 13, 28, 0.48);
+}
+
+/* Blur the conversation beneath the composer; the tint makes its letters
+   disappear while the video's shapes and colors still show through. */
 body.dsh-cutesnowgirl-background-ready .RlGAzG_card,
-body.dsh-cutesnowgirl-background-ready [class*='_card']:has([contenteditable='true']),
-body.dsh-cutesnowgirl-background-ready [class*='_card']:has(textarea) {
-  background: rgba(16, 27, 47, 0.22) !important;
-  border-color: rgba(207, 224, 255, 0.4) !important;
-  box-shadow: 0 5px 24px rgba(3, 10, 24, 0.15), inset 0 0 0 0.5px rgba(220, 233, 255, 0.12);
-  backdrop-filter: blur(10px);
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol [class*='_card']:has([contenteditable='true']),
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol [class*='_card']:has(textarea) {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(155deg, var(--dsh-video-composer-top), var(--dsh-video-composer-bottom)) !important;
+  border: 1px solid var(--dsh-video-composer-border) !important;
+  border-radius: 20px;
+  box-shadow: 0 14px 36px rgba(8, 17, 34, 0.16), inset 0 1px rgba(255, 255, 255, 0.09);
+  -webkit-backdrop-filter: blur(26px) saturate(115%);
+  backdrop-filter: blur(26px) saturate(115%);
+  color: var(--dsh-video-ink);
+  --dsw-alias-label-primary: var(--dsh-video-ink);
+  --dsw-alias-label-secondary: var(--dsh-video-muted);
 }
 
 body.dsh-cutesnowgirl-background-ready .RlGAzG_placeholder {
-  color: rgba(244, 248, 255, 0.78) !important;
-  text-shadow: 0 1px 3px rgba(5, 12, 26, 0.65);
+  color: var(--dsh-video-muted) !important;
+  opacity: 1 !important;
 }
 
 body.dsh-cutesnowgirl-background-ready .RlGAzG_card [contenteditable],
-body.dsh-cutesnowgirl-background-ready [class*='_card'] [contenteditable='true'],
-body.dsh-cutesnowgirl-background-ready [class*='_card'] textarea {
-  color: #f5f8ff;
-  caret-color: #f5f8ff;
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol [class*='_card'] [contenteditable='true'],
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol [class*='_card'] textarea {
+  color: var(--dsh-video-ink) !important;
+  caret-color: var(--dsh-video-ink);
+}
+
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol textarea::placeholder {
+  color: var(--dsh-video-muted) !important;
+  opacity: 1;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  body.dsh-cutesnowgirl-background-ready .BynINW_centerCol {
+    background: rgba(239, 244, 253, 0.9) !important;
+  }
+  body.dsh-cutesnowgirl-background-ready[data-ds-dark-theme] .BynINW_centerCol {
+    background: rgba(14, 25, 44, 0.9) !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

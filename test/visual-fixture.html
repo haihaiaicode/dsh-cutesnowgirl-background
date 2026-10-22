@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../lib/style.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 16px/1.5 "Microsoft YaHei", sans-serif; }
+    #root { min-height: 100vh; display: flex; justify-content: center; }
+    .BynINW_frame { width: min(920px, 100%); min-height: 100vh; }
+    .BynINW_centerCol { width: 100%; min-height: 100vh; padding: 76px 54px; }
+    .answer { max-width: 720px; }
+    .under-composer { position: absolute; top: 334px; max-width: 720px; }
+    .RlGAzG_card { margin-top: 48px; max-width: 720px; min-height: 140px; padding: 24px; }
+    .RlGAzG_placeholder { padding-top: 12px; }
+  </style>
+</head>
+<body class="dsh-cutesnowgirl-background-ready">
+  <div id="dsh-cutesnowgirl-background" aria-hidden="true">
+    <video autoplay muted loop playsinline src="../assets/background.mp4"></video>
+  </div>
+  <div id="root"><main class="BynINW_frame"><section class="BynINW_centerCol">
+    <article class="answer">
+      <h2>为什么伪造签名反而更糟</h2>
+      <p>我把 buildSignature 改成了原版的值，但服务器还是拒绝了，而且拒绝得更早。</p>
+      <p>唯一合理的解释：它还有消息摘要，服务器直接判定请求非法。</p>
+      <p>要过这一关，得从原始签名实现中找到密钥和计算方法。</p>
+      <p class="under-composer">这段旧回答压在输入框后面，磨砂层应该让它无法辨认，也不应与正在输入的字重叠。</p>
+    </article>
+    <div class="RlGAzG_card">
+      <div contenteditable="true">这里是输入文字：字应该清晰，下方回答只能留下朦胧的色块。</div>
+      <div class="RlGAzG_placeholder">发送消息或键入新问题</div>
+    </div>
+  </section></main></div>
+  <script>
+    if (new URLSearchParams(location.search).has('dark')) document.body.setAttribute('data-ds-dark-theme', '')
+  </script>
+</body>
+</html>
