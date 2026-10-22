@@ -210,6 +210,21 @@ body.dsh-cutesnowgirl-background-ready .BynINW_centerCol ._3GBCTG_thinkBody :whe
   text-shadow: none !important;
 }
 
+/* Tool-call headers (write, edit, run command, etc.) are separate from the
+   reasoning row. Keep the disclosure button interactive and tint only its row. */
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol .pFy1Ka_root .pFy1Ka_row {
+  border-radius: 9px;
+  background: var(--dsh-video-detail-tint) !important;
+  color: var(--dsh-video-detail-ink) !important;
+  text-shadow: none !important;
+}
+
+body.dsh-cutesnowgirl-background-ready .BynINW_centerCol .pFy1Ka_row :where(.pFy1Ka_title, .pFy1Ka_summary, .pFy1Ka_summarySuffix, .pFy1Ka_diffStat, .pFy1Ka_fileLink) {
+  color: var(--dsh-video-detail-ink) !important;
+  -webkit-text-fill-color: var(--dsh-video-detail-ink) !important;
+  text-shadow: none !important;
+}
+
 /* Blur the conversation beneath the composer; the tint makes its letters
    disappear while the video's shapes and colors still show through. */
 body.dsh-cutesnowgirl-background-ready .RlGAzG_card,
