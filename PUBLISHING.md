@@ -1,4 +1,6 @@
-# 发布清单
+# 发布与维护清单
+
+当前版本 `0.1.2` 已发布到 npm，GitHub `v0.1.2` 标签已推送，社区市场条目已收录。后续更新代码时先递增版本号，再发布新包。
 
 这个项目有三个不同的发布动作。按顺序完成，用户才能获得最稳定的安装体验。
 
@@ -10,11 +12,11 @@
 4. 在仓库 About 设置中添加 topic：`dsh-plugin`、`deepseek-harness`、`video-background`。
 5. 等待 GitHub Actions 的 Verify 工作流通过。
 
-公开仓库必须创建满 1 天，才能通过社区市场目录的自动检查。
+当前公开仓库及 Verify 工作流已经通过检查。
 
 ## 2. npm 包
 
-首次发布需要在本机完成登录：
+发布后续版本需要在本机完成登录及 npm 的一次性验证：
 
 ```bash
 npm login
@@ -41,7 +43,7 @@ Fork [awesome-dsh-plugin/awesome-dsh-plugin](https://github.com/awesome-dsh-plug
 data/plugins/haihaiaicode__dsh-cutesnowgirl-background.yml
 ```
 
-文件内容使用仓库根目录的 `marketplace-entry.yml`。不要手工修改该目录的 README。提交 PR 后等待 CI 和维护者检查；合并后，`dshmarket` 通常在一天内同步。
+文件内容使用仓库根目录的 `marketplace-entry.yml`。不要手工修改该目录的 README。收录 PR [#8082](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/8082) 已合并；后续代码版本更新通常只需发布新 npm 包，只有条目元数据变化时才需要再提交目录 PR。
 
 ## 用户安装方式
 

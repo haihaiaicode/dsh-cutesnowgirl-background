@@ -16,13 +16,15 @@
 
 ### Harness Desktop
 
-发布到 npm 后，在 **设置 → 插件 → 添加插件** 中输入：
+在 **设置 → 插件 → 添加插件** 中输入：
 
 ```text
 dsh-cutesnowgirl-background@latest
 ```
 
 安装完成后按界面提示重启 Desktop。Desktop 管理的 `desktop` profile 应通过应用内插件管理器修改，不要手工运行 CLI 去覆盖它。
+
+如果电脑上还挂着早期手工安装的本地视频背景，先确认 npm 插件安装成功，再停用旧挂载，避免两个背景同时播放。
 
 ### 其他 Harness profile
 

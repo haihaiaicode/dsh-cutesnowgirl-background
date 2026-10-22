@@ -14,7 +14,7 @@ Adds a looping video background and a translucent composer to the DeepSeek Harne
 
 ## Install
 
-After the package is published, open **Settings → Plugins → Add plugin** in Harness Desktop and enter:
+Open **Settings → Plugins → Add plugin** in Harness Desktop and enter:
 
 ```text
 dsh-cutesnowgirl-background@latest
@@ -27,6 +27,8 @@ dsh plugin --profile <profile-name> add dsh-cutesnowgirl-background@latest
 ```
 
 The Desktop-owned `desktop` profile should be changed through the in-app plugin manager, not overwritten with the CLI.
+
+If an older video background is still manually mounted on your computer, confirm the npm plugin works before disabling that old mount so two video layers do not run together.
 
 ## Marketplace listing
 
